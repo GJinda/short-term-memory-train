@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hide {
+  opacity: 0;
+  transition: all 0.5s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
+
+.num-container,
+.input-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 400px;
+  height: 400px;
+  background: #aaa;
+}
+
+@media screen and (max-width:480px) {
+
+  .num-container,
+  .input-container {
+    width: 80vw;
+    height: 80vw;
+  }
+}
+
+.input-container {
+  position: absolute;
+}
+
+.num-container>.num-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: #bbb;
+  font-family: Georgia;
+  font-size: 30px;
+}
+
+@media screen and (max-width:480px) {
+  .num-container>.num-box {
+    width: 16vw;
+    height: 16vw;
+    font-size: 20px;
+  }
+}
+
+.input-container>input {
+  display: block;
+  margin: 10px;
+  width: 60px;
+  height: 60px;
+  background: #ccc;
+  font-family: Georgia;
+  border: 1px solid #000;
+  outline: none;
+  font-size: 30px;
+  text-align: center;
+}
+
+.input-container>input:focus {
+  border: 0;
+}
+
+@media screen and (max-width:480px) {
+  .input-container>input {
+    margin: 2vw;
+    width: 12vw;
+    height: 12vw;
+    font-size: 20px;
+  }
+}
