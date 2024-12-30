@@ -30,7 +30,6 @@ body {
   flex-wrap: wrap;
   width: 400px;
   height: 400px;
-  background: #aaa;
 }
 
 @media screen and (max-width:480px) {
@@ -52,7 +51,6 @@ body {
   align-items: center;
   width: 80px;
   height: 80px;
-  background: #bbb;
   font-family: Georgia;
   font-size: 30px;
 }
@@ -70,16 +68,18 @@ body {
   margin: 10px;
   width: 60px;
   height: 60px;
-  background: #ccc;
   font-family: Georgia;
-  border: 1px solid #000;
+  border: 2px solid #000;
   outline: none;
   font-size: 30px;
   text-align: center;
 }
 
+.input-container>input:hover{
+  border: 2px solid #e0e0e0;
+}
 .input-container>input:focus {
-  border: 0;
+  border: 2px solid #b0b0b0;
 }
 
 @media screen and (max-width:480px) {
