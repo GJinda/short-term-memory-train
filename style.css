@@ -10,6 +10,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
+  font-family: Georgia;
 }
 
 .hide {
@@ -20,6 +21,14 @@ body {
 .show {
   opacity: 1;
   transition: all 0.5s ease-in;
+}
+
+.red {
+  color: #F85951;
+}
+
+.green {
+  color: #26D076;
 }
 
 .num-container,
@@ -51,7 +60,6 @@ body {
   align-items: center;
   width: 80px;
   height: 80px;
-  font-family: Georgia;
   font-size: 30px;
 }
 
@@ -75,11 +83,12 @@ body {
   text-align: center;
 }
 
-.input-container>input:hover{
-  border: 2px solid #e0e0e0;
+.input-container>input:hover {
+  border: 2px solid #c0c0c0;
 }
+
 .input-container>input:focus {
-  border: 2px solid #b0b0b0;
+  border: 2px solid #909090;
 }
 
 @media screen and (max-width:480px) {
@@ -88,5 +97,46 @@ body {
     width: 12vw;
     height: 12vw;
     font-size: 20px;
+  }
+}
+
+.timer,
+.hint {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 200px;
+  height: 50px;
+  font-size: 30px;
+}
+
+.timer {
+  top: 50px;
+}
+
+.hint {
+  bottom: 50px;
+}
+
+.hint-icon {
+  position: absolute;
+}
+
+@media screen and (max-width:480px) {
+
+  .timer,
+  .hint {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width:480px) {
+  .timer {
+    top: 15vh;
+  }
+
+  .hint {
+    bottom: 15vh;
   }
 }

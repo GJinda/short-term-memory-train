@@ -60,13 +60,37 @@ function appendNum(numDomStr) {
 function appendInput(inputDomStr) {
   const inputDom = createDom(inputDomStr);
   inputDom.onblur = (event) => {
+    numCount++
+    if (numCount == 25) {
+      setTimeout(() => {
+        scoreText.innerHTML = `Score:${score}/${numCount}`
+        removeClass(scoreText, 'hide')
+        addClass(scoreText, 'show')
+      }, 2000)
+    }
     let inputValue = event.target.value
     if (inputValue) {
-      console.log(inputValue)
-      console.log(shuffleArray[index])
+      // console.log(inputValue)
+      // console.log(shuffleArray[index])
+      addClass(event.target, 'hide')
+      removeClass(numContainer, 'hide')
       let index = getChildIndex(event.target)
       if (inputValue == shuffleArray[index]) {
-        addClass(event.target, 'hide')
+        score++
+        removeClass(iconRight, 'hide')
+        addClass(iconRight, 'show')
+        setTimeout(() => {
+          removeClass(iconRight, 'show')
+          addClass(iconRight, 'hide')
+        }, 1000)
+      } else {
+        addClass(numContainer.children[index], 'red')
+        removeClass(iconError, 'hide')
+        addClass(iconError, 'show')
+        setTimeout(() => {
+          removeClass(iconError, 'show')
+          addClass(iconError, 'hide')
+        }, 1000)
       }
     }
   }
@@ -80,10 +104,38 @@ function createNumDom() {
     appendInput(inputDomStr)
   });
 }
+function setTimer(seconds) {
+  let minute = Math.floor(seconds / 60)
+  let second = seconds % 60
+  timer.innerHTML = minute > 0 ? (`${minute}` + ':' + (Math.floor(second / 10) > 0 ? `${second}` : ('0' + `${second}`))) : `${second}`
+}
+function countDown(seconds) {
+  let countDownInterval = setInterval(() => {
+    if (seconds == 0) {
+      clearInterval(countDownInterval)
+      addClass(timer, 'hide')
+      addClass(numContainer, 'hide')
+      removeClass(inputContainer, 'hide')
+      addClass(inputContainer, 'show')
+    }
+    setTimer(seconds)
+    seconds--
+  }, 1000)
+}
 
 //get dom
 const numContainer = $('.num-container')
 const inputContainer = $('.input-container')
+const timer = $('.timer')
+const hint = $('.hint')
+const iconRight = $('.icon-right')
+const iconError = $('.icon-error')
+const scoreText = $('.score-text')
+
+//set countDown time
+const seconds = 120
+let numCount = 0
+let score = 0
 
 //get random number array
 const numArray = getNumArray()
@@ -92,3 +144,4 @@ const shuffleArray = getShuffleArray(numArray)
 console.log('shuffleArray')
 console.log(shuffleArray)
 createNumDom()
+countDown(seconds)
